@@ -1,0 +1,58 @@
+SELECT 
+	c.nome Conta, c.nome_usuario Usuário, p.nome_per Personagem, p.nvl_per Nível 
+FROM 
+	clientes c
+INNER JOIN 
+	personagens p
+ON 
+	p.fk_id_cliente = c.id_cliente
+ORDER BY 
+	c.id_cliente;
+  
+
+SELECT 
+	s.nome 'Servidor', c.nome 'Cliente', c.nome_usuario 'Usuário', p.nome_per 'Personagem', p.sexo_per 'Sexo', r.nome_raca 'Raça', cl.nome_classe 'Classe', p.nvl_per 'Nível' 
+FROM 
+	clientes c
+INNER JOIN 
+	personagens p 
+ON 
+	p.fk_id_cliente = c.id_cliente
+INNER JOIN
+	racas r 
+ON
+	p.fk_id_raca = r.id_raca
+INNER JOIN 
+	classes cl
+ON 
+	p.fk_id_classe = cl.id_classe
+INNER JOIN 
+	servidores s 
+ON
+	p.fk_id_servidor = s.id_servidor
+GROUP BY 
+	p.id_per
+ORDER BY 
+	s.id_servidor;
+
+
+SELECT 
+	c.nome 'Nome', c.email 'E-mail', c.telefone 'Telefone', date_format(c.data_criacao, '%d/%m/%Y') 'Criação da Conta', con.tipo_conta 'Tipo de Conta',(DATEDIFF(CURDATE(),c.data_criacao)) 'Tempo de Conta', (SELECT COUNT(*) 
+FROM 
+	personagens id_per 
+WHERE
+	fk_id_cliente = id_cliente) 'Total de Personagens' 
+FROM
+	clientes c
+INNER JOIN
+	contas con
+ON 
+	c.fk_id_conta = con.id_conta
+RIGHT JOIN
+	personagens p
+ON 
+	p.fk_id_cliente = c.id_cliente
+GROUP BY
+	c.id_cliente
+ORDER BY
+	con.tipo_conta;

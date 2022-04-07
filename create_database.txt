@@ -1,0 +1,124 @@
+
+CREATE TABLE public.contas 
+(
+  id_conta SERIAL,
+  tipo_conta VARCHAR(10) NOT NULL UNIQUE,
+  max_per INT NOT NULL,
+  nvl_max_per INT NOT NULL,
+  PRIMARY KEY (id_conta)
+);
+
+CREATE TABLE public.clientes 
+(
+  id_cliente SERIAL,
+  nome VARCHAR(75) NOT NULL,
+  sexo VARCHAR(10) NOT NULL,
+  data_nasc DATE NOT NULL,
+  email VARCHAR(50) NOT NULL UNIQUE,
+  ac_nov VARCHAR(3) NOT NULL DEFAULT 'Sim',
+  telefone VARCHAR(20) NOT NULL,
+  cidade VARCHAR(50) NOT NULL,
+  estado VARCHAR(20) NOT NULL,
+  pais VARCHAR(20) NOT NULL,
+  nome_usuario VARCHAR(20) NOT NULL UNIQUE,
+  senha VARCHAR(25) NOT NULL,
+  data_criacao DATE NOT NULL,
+  atividade TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  fk_id_conta INT NOT NULL,
+  PRIMARY KEY (id_cliente),
+  FOREIGN KEY (fk_id_conta) REFERENCES contas (id_conta)
+);
+
+CREATE TABLE public.classes
+(
+  id_classe SERIAL,
+  nome_classe VARCHAR(20) NOT NULL,
+  desc_classe TEXT NOT NULL,
+  PRIMARY KEY (id_classe)
+);
+
+CREATE TABLE public.servidores
+(
+  id_servidor SERIAL,
+  nome VARCHAR(45) NOT NULL UNIQUE,
+  lotacao INT DEFAULT 0,
+  lotacao_max INT NOT NULL,
+  PRIMARY KEY (id_servidor)
+);
+
+CREATE TABLE public.racas
+(
+  id_raca SERIAL,
+  nome_raca VARCHAR(15) NOT NULL UNIQUE,
+  desc_raca TEXT NOT NULL,
+  PRIMARY KEY (id_raca)
+);
+
+CREATE TABLE public.personagens
+(
+  id_per SERIAL,
+  fk_id_cliente INT NOT NULL,
+  nome_per VARCHAR(45) NOT NULL UNIQUE,
+  sexo_per VARCHAR(10) NOT NULL,
+  fk_id_raca INT NOT NULL,
+  fk_id_classe INT NOT NULL,
+  nvl_per INT NOT NULL DEFAULT 0,
+  exp_per BIGINT NOT NULL DEFAULT 0,
+  vida_per INT NOT NULL DEFAULT 0,
+  vida_max_per INT NOT NULL DEFAULT 100,
+  magia_furia INT NOT NULL DEFAULT 0,
+  pos_x INT NOT NULL,
+  pos_y INT NOT NULL,
+  data_criacao DATE NOT NULL,
+  fk_id_servidor INT NOT NULL DEFAULT 1,
+  PRIMARY KEY (id_per),
+  FOREIGN KEY (fk_id_cliente) REFERENCES clientes (id_cliente),
+  FOREIGN KEY (fk_id_raca) REFERENCES racas (id_raca),
+  FOREIGN KEY (fk_id_classe) REFERENCES classes (id_classe),
+  FOREIGN KEY (fk_id_servidor) REFERENCES servidores (id_servidor)
+);
+
+CREATE TABLE public.tipo_poder 
+(
+  id_tipo_poder SERIAL,
+  nome VARCHAR(15) NOT NULL UNIQUE,
+  PRIMARY KEY (id_tipo_poder)
+);
+
+CREATE TABLE public.poderes
+(
+  id_poder SERIAL,
+  nome VARCHAR(45) NOT NULL UNIQUE,
+  tx_crit INT NOT NULL,
+  tx_acerto INT NOT NULL,
+  fk_id_tipo_poder INT NOT NULL,
+  PRIMARY KEY (id_poder),
+  FOREIGN KEY (fk_id_tipo_poder) REFERENCES tipo_poder (id_tipo_poder)
+);
+
+CREATE TABLE public.personagens_poderes
+(
+  per_id_per INT NOT NULL,
+  poderes_id_poder INT NOT NULL,
+  PRIMARY KEY (per_id_per, poderes_id_poder),
+  FOREIGN KEY (per_id_per) REFERENCES personagens (id_per),
+  FOREIGN KEY (poderes_id_poder) REFERENCES poderes (id_poder)
+);
+
+CREATE TABLE public.classes_poderes
+(
+  classes_id_classe INT NOT NULL,
+  poderes_id_poder1 INT NOT NULL,
+  PRIMARY KEY (classes_id_classe,poderes_id_poder1),
+  FOREIGN KEY (classes_id_classe) REFERENCES classes (id_classe),
+  FOREIGN KEY (poderes_id_poder1) REFERENCES poderes (id_poder) 
+);
+
+CREATE TABLE public.novidades
+(
+  id_nov SERIAL,
+  nome VARCHAR(75) NOT NULL,
+  aniversario VARCHAR(5) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id_nov)
+);

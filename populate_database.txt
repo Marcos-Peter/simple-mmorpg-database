@@ -1,0 +1,105 @@
+-- CRIAÇÃO DE INSERTS PARA ALIMENTAR AS TABELAS
+INSERT INTO public.servidores
+	(nome,lotacao,lotacao_max) 
+VALUES
+	('Principal',750,1200),
+	('Secundário',346,800),
+	('Teste',0,500);
+
+INSERT INTO public.contas
+	(tipo_conta,max_per,nvl_max_per) 
+VALUES
+	('Gratuita',3,45),
+	('Assinatura',30,150),
+	('Migrada',33,150);
+
+INSERT INTO public.tipo_poder 
+	(nome) 
+VALUES
+	('Ataque'),
+	('Defesa'),
+	('Cura');
+
+INSERT INTO public.poderes
+(nome,tx_crit,tx_acerto,fk_id_tipo_poder) 
+VALUES
+	('Investida',18,51,1),
+	('Bola de Fogo',26,64,1),
+	('Escudo Divino',18,65,2),
+	('Recuperação',17,69,3);
+
+INSERT INTO public.classes
+	(nome_classe,desc_classe) 
+VALUES
+	('Paladino','Cavaleiro sagrado, utiliza armas e armaduras pesadas além de contar com o poder sagrado da luz.'),
+	('Arqueiro','Caçador, se move como as sombras, utiliza arco longo e armadura média.'),
+	('Mago','Estudioso das artes mágicas, utiliza armaduras leves e cajado, além de	contar com todos os poderes da natureza.'),
+	('Shaman','Excelentes forjadores, possuem alta resistência.');
+
+INSERT INTO public.racas
+	(nome_raca,desc_raca) 
+VALUES
+	('Humano','Apesar de não serem os mais poderosos, são muito inteligentes.'),
+	('Elfo','Ligados a natureza, são a raça mais bela e com certeza a mais eficiente.'),
+	('Anão','Excelentes forjadores, possuem alta resistência.');
+
+INSERT INTO public.clientes
+	(nome,sexo,data_nasc,email,ac_nov,telefone,cidade,estado,pais,nome_usuario,senha,data_criacao,fk_id_conta) 
+VALUES
+	('Kauan Castro','Masculino','1994-8-11','KauanSousaCastro@teleworm.us','Não','+55 (51) 8329-5974','Novo Hamburgo','Rio Grande do Sul','Brasil','Weenin','Nieho4eju','2020-1-3','3'),
+	('Breno Almeida','Masculino','1995-6-19','BrenoPereiraAlmeida@cuvox.de','Sim ','+55 (16) 7027-4303','Matão','São Paulo','Brasil','Moralm','olohF3phau','2020-1-24','2'),
+	('Leonardo Costa','Masculino','1980-2-5','LeonardoGoncalvesCosta@jourrapide.com','Sim','+55 (11) 7806-6753','Mauá','São Paulo','Brasil','Rearn2000','UuthaeCh6','2020-4-20','2'),
+	('Manuela Correia','feminino','1981-5-23','ManuelaSousaCorreia@jourrapide.com','Sim ','+55 (48) 7554-9210','Criciúma','Santa Catarina','Brasil','Shmidecir1996','paepahz6Ee','2020-3-29','1'),
+	('Bruno Almeida','Masculino','1983-9-24','BrunoCorreiaAlmeida@dayrep.com','Não','+55 (19) 5520-8745','Piracicaba','São Paulo','Brasil','Foraceir','thu9Aequo','2020-3-26','1'),
+	('Matilde Barbosa','feminino','1990-1-13','MatildeRibeiroBarbosa@armyspy.com','Não','+55 (61) 4559-4093','Ceilândia','Distrito Federal','Brasil','Wople1998','ahGhohM9Ah','2020-1-13','3'),
+	('Eduarda Cardoso','feminino','1996-6-5','EduardaCarvalhoCardoso@einrot.com','Sim ','+55 (62) 8938-2102','Aparecida de Goiânia','Goiás','Brasil','Prower','phae1Laesh4','2020-2-14','2'),
+	('Marisa Almeida','feminino','1994-10-9','MarisaSantosAlmeida@fleckens.hu','Sim ','+55 (12) 5039-2663','Guaratinguetá','São Paulo','Brasil','Latim1989','uBoh0eethei','2020-4-30','3'),
+	('Sofia Castro','feminino','1976-5-10','SofiaGomesCastro@einrot.com','Não','+55 (41) 6625-5111','Curitiba','Paraná','Brasil','Supeceat','cai4AhFooy8','2020-4-18','1'),
+	('Fábio Melo','Masculino','1982-5-8','FabioLimaMelo@dayrep.com','Sim ','+55 (71) 8137-8350','Salvador','Bahia','Brasil','Hasy1979','thee8Voaqu','2020-4-16','1'),
+	('Rafaela Cavalcanti','feminino','2002-6-13','RafaelaAzevedoCavalcanti@fleckens.hu','Sim ','+55 (32) 6264-8345','Cataguases','Minas Gerais','Brasil','Shopean','Usohngail6Ie','2020-1-12','1'),
+	('Giovanna Pereira','feminino','1979-1-31','GiovannaBarbosaPereira@jourrapide.com','Sim ','+55 (15) 3008-6614','Sorocaba','São Paulo','Brasil','Foreseplact87','mah5Igee2Loo','2020-5-21','3'),
+	('Antônio Azevedo','Masculino','1983-12-11','AntonioAraujoAzevedo@teleworm.us','Não','+55 (45) 8934-9920','Toledo','Paraná','Brasil','Crive1988','jaer4EiJa8','2020-5-31','1'),
+	('Antônio Cunha','Masculino','2000-5-3','AntonioAlmeidaCunha@rhyta.com','Sim ','+55 (19) 5661-4062','Sumaré','São Paulo','Brasil','Aliedids','oi9ko0EGail','2020-1-2','1'),
+	('Murilo Pinto','Masculino','1977-12-21','MuriloRodriguesPinto@fleckens.hu','Sim ','+55 (54) 4911-9063','Caxias do Sul','Rio Grande do Sul','Brasil','Acephror','Mai1uph7ee','2020-2-22','3'),
+	('Livia Gomes','feminino','1986-8-2','LiviaDiasGomes@rhyta.com','Não','+55 (11) 5213-3883','Jundiaí','São Paulo','Brasil','Groody','Yohnah6quoo','2020-1-7','1'),
+	('Alex Correia','Masculino','1979-8-7','AlexFernandesCorreia@superrito.com','Não','+55 (13) 9542-4553','Praia Grande','São Paulo','Brasil','Buthrel','ahw5aiVu6i','2020-1-23','3'),
+	('Livia Martins','feminino','1993-7-9','LiviaSantosMartins@jourrapide.com','Não','+55 (91) 4272-5671','Belém','Pará','Brasil','Acese1994','zof4su8Ai','2020-1-7','2'),
+	('Vitória Martins','feminino','1977-2-16','VitoriaRochaMartins@teleworm.us','Sim ','+55 (27) 2179-2218','Vitória','Espírito Santo','Brasil','Allse1989','aev7Vaqu3oh','2020-4-10','2'),
+	('Lavinia Castro','feminino','1983-8-5','LaviniaDiasCastro@jourrapide.com','Não','+55 (21) 5000-5171','Queimados','Rio de Janeiro','Brasil','Gagarrour','lahsoh0M','2020-2-3','3'),
+	('Luana Lima','feminino','1975-10-13','LuanaGoncalvesLima@rhyta.com','Sim ','+55 (81) 4863-4107','Recife','Pernambuco','Brasil','Orearrythe','cieCeibee8v','2020-2-8','2'),
+	('Rodrigo Dias','Masculino','1980-9-16','RodrigoCostaDias@armyspy.com','Sim ','+55 (34) 2919-6078','Uberlândia','Minas Gerais','Brasil','Cank2000','thei7Aiya','2020-3-12','3'),
+	('Eduarda Santos','feminino','1988-5-22','EduardaRochaSantos@fleckens.hu','Sim ','+55 (16) 6664-3686','Mogi-Guaçu','São Paulo','Brasil','Fecrused','kiGaet4dah','2020-4-16','3'),
+	('Evelyn Souza','feminino','1976-1-29','EvelynGoncalvesSouza@dayrep.com','Não','+55 (14) 9266-3817','Avaré','São Paulo','Brasil','Huntionly','shah3ZeH6','2020-1-20','3');
+
+INSERT INTO public.personagens 
+	(fk_id_cliente,nome_per,sexo_per,fk_id_raca,fk_id_classe,nvl_per,exp_per,vida_per,magia_furia,pos_x,pos_y,data_criacao,fk_id_servidor)
+VALUES
+	('15','Urhan','Masculino','1','3','109','143339','14','52','56','-56','2020-1-8','1'),
+	('17','Ejamar','Feminino','2','3','43','284308','15','94','-36','73','2020-2-8','1'),
+	('24','Qrutrix','Masculino','1','2','143','176747','69','19','62','-17','2020-1-12','1'),
+	('1','Oruxeor','Masculino','2','1','72','109037','52','48','-49','-45','2020-4-4','1'),
+	('7','Ushan','Feminino','2','4','77','243818','52','91','54','-68','2020-4-5','1'),
+	('20','Ugovras','Masculino','3','2','130','295771','38','89','-12','56','2020-3-11','1'),
+	('12','Igoxium','Masculino','2','3','112','159724','42','52','39','66','2020-2-19','1'),
+	('17','Ataz','Feminino','3','3','137','114254','52','35','-5','83','2020-1-15','1'),
+	('8','Ilrolius','Masculino','2','4','13','75210','41','4','-93','-24','2020-2-15','2'),
+	('20','Azadium','Feminino','1','2','82','157712','10','92','-44','13','2020-2-16','1'),
+	('24','Oharad','Masculino','1','2','66','201331','74','44','-95','-26','2020-2-28','1'),
+	('24','Olozor','Masculino','1','2','39','70415','41','73','80','-49','2020-2-1','2'),
+	('15','Qruprix','Masculino','1','3','23','118378','76','77','-42','-79','2020-1-10','1'),
+	('21','Qraqium','Feminino','2','3','89','45839','40','18','97','24','2020-3-16','2'),
+	('11','Oligron','Feminino','3','4','135','217937','49','71','73','-66','2020-1-21','2'),
+	('13','Ophior','Masculino','3','4','101','138120','50','79','44','-5','2020-3-3','1'),
+	('21','Equam','Masculino','2','1','91','51266','46','45','23','17','2020-4-18','2'),
+	('11','Grijahr','Masculino','3','4','22','15522','64','29','75','24','2020-1-4','2'),
+	('15','Aharis','Masculino','2','2','116','97864','12','64','55','26','2020-2-13','2'),
+	('11','Olzoxon','Feminino','2','3','15','295048','9','10','-62','-35','2020-4-18','2'),
+	('16','Aqinn','Masculino','1','1','35','255663','16','78','48','100','2020-4-10','1'),
+	('23','Aharise','Masculino','3','1','33','159241','38','100','-10','-88','2020-2-27','1'),
+	('10','Anydae','Masculino','1','2','2','137939','71','48','-71','21','2020-4-20','1'),
+	('3','Atosh','Feminino','3','3','9','159032','1','46','37','46','2020-3-4','2'),
+	('14','Neharise','Feminino','1','2','120','256696','71','93','-1','25','2020-4-27','1'),
+	('5','Estrea','Feminino','1','4','107','1751','76','98','-100','93','2020-4-15','2'),
+	('1','Arexone','Feminino','2','1','101','270754','92','3','-91','4','2020-2-18','2'),
+	('11','Nubis','Feminino','2','3','49','227740','85','86','-70','-21','2020-4-17','1'),
+	('18','Ulobelle','Masculino','2','4','94','60964','92','4','20','-65','2020-1-16','2');
